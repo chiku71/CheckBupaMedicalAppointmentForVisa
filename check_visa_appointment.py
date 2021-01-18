@@ -7,11 +7,13 @@ import sys
 logger = logging.getLogger("asyncio")
 logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(logging.INFO)
+#logger.setLevel(logging.DEBUG)
 
 BASE_URL = "https://bmvs.onlineappointmentscheduling.net.au/oasis/"
 FILE_PATH_TPL = "{}_{}.png"
 
 expected_date_val_max = int(sys.argv[1])#20210130 # 20210130 # 20210330
+#logger.info("Expected Appointment Before : '{}'".format(expected_date_val_max))
 suburb = "3008"
 state = "VIC"
 TAKE_SCREENSHOT = False
@@ -80,7 +82,9 @@ async def main(ts):
     date_val = date_val_obj.__dict__.get("_remoteObject", dict()).get("value")
     logger.debug("Date Value : {}".format(date_val))
     date_val_elems = date_val.split("/")
-    date_val_int = int("{}{}{}".format(date_val_elems[2], date_val_elems[1], date_val_elems[0]))
+    date_val_int = int("{}{}{}".format(date_val_elems[2], 
+    					date_val_elems[1] if len(date_val_elems[1]) == 2 else "0{}".format(date_val_elems[1]), 
+    					date_val_elems[0] if len(date_val_elems[0]) == 2 else "0{}".format(date_val_elems[0])))
 
     if date_val_int <= expected_date_val_max:
         logger.info(date_val)
