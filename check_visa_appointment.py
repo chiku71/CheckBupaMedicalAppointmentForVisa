@@ -42,7 +42,7 @@ async def close_dialog(dialog):
 
 async def main(ts):
     logger.debug("Launching Browser ...")
-    browser = await launch({'headless': False}) #, executablePath="C:\Program Files\Google\Chrome\Application\chrome.exe")
+    browser = await launch({'headless': True}) #, executablePath="C:\Program Files\Google\Chrome\Application\chrome.exe")
     logger.debug("Opening new page ...")
     page = await browser.newPage()
     logger.debug("Opening '{}'".format(BASE_URL))
