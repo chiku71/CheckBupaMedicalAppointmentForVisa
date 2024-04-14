@@ -8,3 +8,5 @@ Steps:
 
 The script will run every 30 secs and will show notification when any appointment date is available before the provided date.
 
+To fix issue with getting stuck after Launching browser:
+$ pip3 install websockets -U

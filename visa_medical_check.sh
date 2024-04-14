@@ -6,7 +6,7 @@ source venv/bin/activate
 
 TST=true
 
-FIND_APPOINTMENT_BEFORE_DATE="20210430"
+FIND_APPOINTMENT_BEFORE_DATE="20240519"
 
 while [ $TST == true ]
 do
@@ -14,7 +14,7 @@ do
 	echo "-----------------------------------------------------------------------------------------------"
 	echo $(date)
 
-	OUTPUT_RUN=$(python check_visa_appointment.py $FIND_APPOINTMENT_BEFORE_DATE)
+	OUTPUT_RUN=$(python3 check_visa_appointment.py $FIND_APPOINTMENT_BEFORE_DATE)
 	#OUTPUT_RUN="30/03/2021"
 	echo $OUTPUT_RUN
 
